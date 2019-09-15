@@ -37,10 +37,10 @@
             $drawing-size-multiple: 7.5;
 
             top: -110%;
-            height: $drawing-size-multiple * 10vw;
+            height: $drawing-size-multiple * 10 * $baseunit;
             width: 100vw;
             background-image: url('../assets/images/drawing-stethescope.png');
-            background-position: top right ($drawing-size-multiple * -2vw);
+            background-position: top right ($drawing-size-multiple * -2 * $baseunit);
             background-repeat: no-repeat;
             background-size: auto 100%;
             z-index: $z-index-front-1;
@@ -245,7 +245,7 @@
         @extend .container;
         @include full-width-bg($color-seafoam);
         @include full-width-bg($color-none, $pseudoelement-after: true) {
-            height: 100vw;
+            height: $baseunit * 85;
             width: 60vw;
             margin-left: -70vw;
             background-image: url('../assets/images/drawing-pencil.png');
