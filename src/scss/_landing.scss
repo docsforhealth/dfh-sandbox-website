@@ -1,0 +1,289 @@
+// Wrap in a block to avoid introducing global scope variables
+.landing {
+    $hero-total-height: 98vh;
+    $nav-and-header-proportion: 0.7;
+    $header-slant-height: $baseunit * 5;
+
+    &-header {
+        @extend .container;
+        @include full-width-bg($color-seafoam) {
+            height: 100%;
+        }
+        @include full-width-bg($color-none, $pseudoelement-after: true) {
+            height: 0;
+            width: 0;
+            top: 100%;
+            border-top: $header-slant-height solid $color-seafoam;
+            border-right: 100vw solid $color-none;
+        }
+
+        display: flex;
+        align-items: center;
+        height: calc(
+            #{$hero-total-height * $nav-and-header-proportion} - #{$header-slant-height} -
+                #{$height-nav}
+        );
+
+        &__container {
+            width: 60%;
+        }
+    }
+
+    &-video {
+        $play-button-left-position: 50%;
+
+        @extend .container;
+        @include full-width-bg($color-none) {
+            $drawing-size-multiple: 7.5;
+
+            top: -110%;
+            height: $drawing-size-multiple * 10vw;
+            width: 100vw;
+            background-image: url('../assets/images/drawing-stethescope.png');
+            background-position: top right ($drawing-size-multiple * -2vw);
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            z-index: $z-index-front-1;
+        }
+        @include full-width-bg(
+            $color-gold-light-2,
+            $pseudoelement-after: true
+        ) {
+            top: 50%;
+            left: $play-button-left-position;
+            margin-top: -50vw;
+            margin-left: -100vw;
+            height: 100vw;
+            width: 100vw;
+            border-radius: 100%;
+            z-index: $z-index-behind-2;
+        }
+
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: calc(
+            #{$hero-total-height * (1 - $nav-and-header-proportion)} + #{$header-slant-height}
+        );
+
+        &__description {
+            width: calc(#{$play-button-left-position} - #{$height-control});
+        }
+        &__preview {
+            position: absolute;
+            left: calc(#{$play-button-left-position} + #{$height-control});
+            bottom: 0;
+            height: 80%;
+            transform: rotateY(180deg);
+        }
+        &__button {
+            @include scut-center-transform;
+
+            top: calc(50% + #{$baseunit});
+            left: $play-button-left-position;
+            height: $height-control;
+            width: $height-control;
+            background-color: $color-gold;
+            color: $color-gold-dark-1;
+            border: 1px solid $color-gold-dark-1;
+            border-radius: 100%;
+
+            &:after {
+                $triangle-size: $height-control * 0.4;
+                @include scut-triangle(right, $triangle-size);
+
+                content: '';
+                position: relative;
+                top: $triangle-size * 0.1;
+                left: $triangle-size * 0.1;
+            }
+        }
+    }
+    &-cover-video-overflow {
+        @include full-width-bg($color-white);
+    }
+}
+
+.landing-mission {
+    @extend .container;
+    @extend .container--narrow;
+    @include full-width-bg($color-gold-light-1) {
+        height: $baseunit;
+    }
+    @include full-width-bg($color-none, $pseudoelement-after: true) {
+        background-image: url('../assets/images/bg-blue-wave.png');
+        background-position: center left -10vw;
+        background-repeat: no-repeat;
+        background-size: 120vw 70%;
+    }
+
+    padding: ($baseunit * 5) 0;
+
+    &__title {
+        @include scut-hide-visually;
+    }
+}
+
+.landing-values {
+    @extend .container;
+
+    &__value {
+        display: flex;
+        margin-bottom: $baseunit * 5;
+
+        &--reversed {
+            flex-direction: row-reverse;
+        }
+
+        &__description {
+            width: 50%;
+        }
+        &__image {
+            width: 50%;
+            padding: 0 10%;
+        }
+    }
+}
+
+.landing {
+    $ellipse-height: $baseunit * 10;
+
+    &-categories {
+        $divider-height: $baseunit;
+        $nav-height: $baseunit * 4;
+
+        @extend .container;
+        @include full-width-bg($color-none) {
+            height: $nav-height + $divider-height;
+            background: linear-gradient(
+                $color-gold-light-1 $divider-height,
+                $color-gold-light-2 $divider-height
+            );
+        }
+        @include full-width-bg($color-white, $pseudoelement-after: true) {
+            top: auto;
+            bottom: $ellipse-height * -0.5;
+            height: $ellipse-height;
+            border-radius: 100%;
+            z-index: $z-index-front-1;
+        }
+
+        &__nav {
+            @include scut-list-unstyled;
+
+            display: flex;
+            align-items: stretch;
+            height: $nav-height + $divider-height;
+            padding-top: $divider-height;
+
+            &-item {
+                min-width: 0;
+                flex-grow: 1;
+
+                &__button {
+                    height: 100%;
+                    width: 100%;
+                    border-width: 0;
+                    border-radius: 0;
+                    color: $color-navy;
+                    font-weight: $font-weight-bold;
+
+                    &:hover,
+                    &:visited,
+                    &:active,
+                    &--active {
+                        background-color: $color-gold-light-1;
+                    }
+                    &--active {
+                        position: relative;
+
+                        &:after {
+                            @include scut-triangle(
+                                up,
+                                ($baseunit * 1.2) ($baseunit * 0.8),
+                                $color-white
+                            );
+                            @include scut-center-transform(x);
+
+                            content: '';
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+        &__slide-container {
+            position: relative; // so z-index works
+            z-index: $z-index-front-2; // overlay ellipse
+        }
+        &__slide {
+            display: flex;
+            padding: ($baseunit * 3) $baseunit 0;
+
+            &__description {
+                width: 50%;
+                padding-right: $baseunit * 3;
+            }
+            &__examples {
+                @include scut-list-unstyled;
+
+                width: 50%;
+            }
+            &__example {
+                border: 1px solid $color-seafoam-dark-1;
+                border-radius: $border-radius;
+                padding: $baseunit;
+
+                & + & {
+                    margin-top: $baseunit * 0.5;
+                }
+            }
+        }
+    }
+
+    &-toolkits {
+        @extend .container;
+        @include full-width-bg($color-seafoam);
+        @include full-width-bg($color-none, $pseudoelement-after: true) {
+            height: 100vw;
+            width: 60vw;
+            margin-left: -70vw;
+            background-image: url('../assets/images/drawing-pencil.png');
+            background-position: top right;
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: $z-index-front-1;
+        }
+
+        display: flex;
+        justify-content: flex-end;
+        padding-top: $ellipse-height;
+
+        &__featured {
+            width: 50%;
+        }
+    }
+}
+
+.landing-contact {
+    @extend .container;
+    @extend .container--narrow;
+    @include full-width-bg($color-seafoam);
+    @include full-width-bg($color-none, $pseudoelement-after: true) {
+        background-image: url('../assets/images/bg-yellow-waves.png');
+        background-position: bottom left -10vw;
+        background-repeat: no-repeat;
+        background-size: 120vw 50%;
+        opacity: 0.7;
+    }
+
+    padding: ($baseunit * 8) 0;
+
+    &__form {
+        @extend .card;
+
+        position: relative; // so z-index works
+        padding: ($baseunit * 2) ($baseunit * 3);
+        z-index: $z-index-front-1;
+    }
+}

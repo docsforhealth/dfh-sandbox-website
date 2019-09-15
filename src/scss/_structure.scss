@@ -1,0 +1,72 @@
+.container {
+    width: 68 * $baseunit;
+    margin: 0 auto;
+
+    &--narrow {
+        width: 45 * $baseunit;
+    }
+}
+
+.nav {
+    @extend .container;
+    @include full-width-bg($color-seafoam);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $height-nav;
+
+    &__logo {
+        width: $width-logo;
+        margin-top: $height-nav * 0.02;
+    }
+    &__links {
+        @include scut-list-unstyled;
+        display: flex;
+    }
+    &__link:not(:last-child) {
+        margin-right: $baseunit;
+    }
+}
+
+.footer {
+    @extend .container;
+    @include full-width-bg($color-gold-light-2);
+    @include full-width-bg($color-gold-light-1, $pseudoelement-after: true) {
+        height: $baseunit;
+    }
+
+    display: flex;
+    padding: ($baseunit * 4) 0 ($baseunit * 3);
+
+    &__content {
+        width: 50%;
+        min-width: 0;
+    }
+    &__logo {
+        width: $width-logo;
+        margin-bottom: $baseunit * 0.5;
+    }
+    &__links {
+        @include scut-list-unstyled;
+
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: $width-logo * 0.3;
+    }
+    &__link {
+        color: $color-navy;
+        font-weight: $font-weight-bold;
+
+        &:not(:last-child) {
+            margin-right: $baseunit;
+        }
+    }
+}
+
+.card {
+    background-color: $color-white;
+    border: 1px solid $color-gray-light-1;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.12);
+    border-radius: $border-radius;
+}

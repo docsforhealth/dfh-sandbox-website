@@ -1,0 +1,37 @@
+$color-seafoam-dark-2: #88c8b6;
+$color-seafoam-dark-1: #aed6c9;
+$color-seafoam: #f2f7f5;
+$color-seaform-light-1: #d1e6df;
+
+$color-gold-dark-1: #b7a175;
+$color-gold: #f2dfb9;
+$color-gold-light-1: #f9f0df;
+$color-gold-light-2: #fdfaf3;
+
+$color-gray-dark-1: #333333;
+$color-gray: #595959;
+$color-gray-light-1: #e5e5e5;
+
+$color-navy: #345980;
+$color-white: white;
+$color-none: transparent;
+
+$baseunit: 1rem;
+
+$height-nav: $baseunit * 5;
+$height-control: $baseunit * 3;
+
+$width-logo: $baseunit * 14;
+
+$offset-form-item: $baseunit * 0.7;
+
+$font-weight-normal: 400;
+$font-weight-bold: 600; // actually is semi-bold
+
+$border-radius: 3px;
+
+$z-index-front-2: 10;
+$z-index-front-1: 5;
+$z-index-reset: 0; // create new stacking context
+$z-index-behind-1: -5;
+$z-index-behind-2: -10;

@@ -1,0 +1,14 @@
+.margin-b {
+    &-2,
+    &-2:last-of-type {
+        margin-bottom: $baseunit * 2;
+    }
+    &-3,
+    &-3:last-of-type {
+        margin-bottom: $baseunit * 3;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
