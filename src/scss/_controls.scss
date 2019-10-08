@@ -10,16 +10,6 @@
     &:active {
         text-decoration: none;
     }
-    &--nav {
-        @extend .text--large;
-
-        color: $color-navy;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
 }
 
 .button {
@@ -51,7 +41,7 @@
         width: 100%;
         min-width: 0;
 
-        @media (min-width: $media-tablet) {
+        @media (min-width: $media-width-tablet) {
             &--half {
                 width: 50%;
                 padding-right: $offset-form-item-2 * 2;
@@ -85,7 +75,7 @@
             border-color: $color-seafoam-dark-2;
         }
 
-        @media (min-width: $media-tablet) {
+        @media (min-width: $media-width-tablet) {
             width: calc(100% + #{$offset-form-item-2 * 2});
             margin-left: $offset-form-item-2 * -1;
             padding: $offset-form-item-2;

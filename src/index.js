@@ -21,6 +21,11 @@ $(function() {
       $(targetSelector).slick('slickGoTo', targetIndex);
     },
   );
+
+  $('.nav__menu-toggle').on('click', function() {
+    $('.nav').toggleClass('nav--open');
+    $('.nav__links-container').slideToggle('fast');
+  });
 });
 
 function setCategoryActive(sliderEl, index) {

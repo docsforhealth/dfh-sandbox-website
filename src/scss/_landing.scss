@@ -15,8 +15,12 @@
 
         display: flex;
         align-items: center;
-        height: 70vh;
+        min-height: 70vh;
         max-height: $baseunit * 35;
+
+        &__container {
+            width: 100%;
+        }
     }
     &-video {
         @extend .container;
@@ -50,7 +54,7 @@
         flex-wrap: wrap;
         align-content: flex-end;
         position: relative;
-        height: 55vh;
+        min-height: 55vh;
         max-height: $baseunit * 25;
 
         &__description {
@@ -59,6 +63,7 @@
         &__preview {
             margin-top: $baseunit * 2;
             width: 50%;
+            max-width: $baseunit * 15;
         }
         &__button {
             @include scut-center-transform;
@@ -87,28 +92,57 @@
         @include full-width-bg($color-white);
     }
 
-    @media (min-width: $media-tablet) {
+    // vertical spacing for landscape orientation for iPhone 5
+    @media (orientation: landscape) {
+        &-header {
+            min-height: 90vh;
+        }
+        &-video {
+            min-height: 110vh;
+        }
+    }
+    // vertical spacing for landscape orientation for iPhone 6 Plus
+    @media (orientation: landscape) and (min-width: $media-width-landscape-medium-mobile) {
+        &-header {
+            min-height: 70vh;
+        }
+        &-video {
+            min-height: 90vh;
+        }
+    }
+    // vertical spacing for landscape orientation for iPhone X and Pixel 2 XL
+    @media (orientation: landscape) and (min-width: $media-width-landscape-large-mobile) {
+        &-header {
+            min-height: 90vh;
+        }
+        &-video {
+            min-height: 70vh;
+
+            &:before {
+                top: -35vw;
+            }
+        }
+    }
+    // vertical spacing for actual large width
+    @media (min-width: $media-width-tablet) and (min-height: $media-height-actual-tablet) {
         $hero-total-height: 98vh;
         $nav-and-header-proportion: 0.7;
         $header-slant-height: $baseunit * 5;
 
         &-header {
-            &:after {
-                border-top-width: $header-slant-height;
-            }
-
-            height: calc(
+            min-height: calc(
                 #{$hero-total-height * $nav-and-header-proportion} - #{$header-slant-height} -
                     #{$height-nav}
             );
 
-            &__container {
-                width: 60%;
+            &:after {
+                border-top-width: $header-slant-height;
             }
         }
-
         &-video {
-            $play-button-left-position: 50%;
+            min-height: calc(
+                #{$hero-total-height * (1 - $nav-and-header-proportion)} + #{$header-slant-height}
+            );
 
             &:before {
                 $drawing-size-multiple: 7.5;
@@ -116,18 +150,28 @@
                 top: -35vh;
                 height: $drawing-size-multiple * 10vw;
                 background-position: top right ($drawing-size-multiple * -2vw);
+            }
+        }
+    }
+    // actual large width size general styles
+    @media (min-width: $media-width-tablet) {
+        &-header {
+            &__container {
+                width: 60%;
+            }
+        }
+        &-video {
+            $play-button-left-position: 50%;
+
+            flex-wrap: nowrap;
+
+            &:before {
                 opacity: 0.8;
             }
             &:after {
                 top: 50%;
                 left: $play-button-left-position;
             }
-
-            flex-wrap: nowrap;
-            height: calc(
-                #{$hero-total-height * (1 - $nav-and-header-proportion)} + #{$header-slant-height}
-            );
-
             &__description {
                 width: calc(#{$play-button-left-position} - #{$height-control});
             }
@@ -161,7 +205,7 @@
         background-repeat: no-repeat;
         background-size: 160vw 70%;
 
-        @media (min-width: $media-tablet) {
+        @media (min-width: $media-width-tablet) {
             background-size: 120vw 70%;
         }
     }
@@ -194,25 +238,13 @@
             opacity: 0.4;
         }
 
-        &--reversed &__description-title {
-            margin-left: $value-image-space;
-        }
-        &--reversed &__image {
-            right: calc(100% - #{$value-image-space} + #{$baseunit});
-            left: auto;
-        }
-
-        @media (min-width: $media-tablet) {
+        @media (min-width: $media-width-tablet) {
             &--reversed {
                 flex-direction: row-reverse;
             }
 
             &__description {
                 width: 50%;
-            }
-            &__description-title {
-                margin-left: 0;
-                margin-right: 0;
             }
             &__image {
                 position: initial;
@@ -257,7 +289,7 @@
                 flex-shrink: 0;
                 height: $nav-height;
                 width: $nav-height;
-                background-image: url('../assets/images/icon-arrow.png');
+                background-image: url('../assets/images/icon-arrow.svg');
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: $baseunit * 2;
@@ -308,7 +340,7 @@
                 }
             }
 
-            @media (min-width: $media-tablet) {
+            @media (min-width: $media-width-tablet) {
                 &__arrow {
                     display: none !important;
                 }
@@ -360,7 +392,7 @@
                 display: none;
             }
 
-            @media (min-width: $media-tablet) {
+            @media (min-width: $media-width-tablet) {
                 &__description {
                     width: 50%;
                     padding-right: $baseunit * 3;
@@ -408,7 +440,7 @@
             z-index: $z-index-front-2;
         }
 
-        @media (min-width: $media-tablet) {
+        @media (min-width: $media-width-tablet) {
             &:after {
                 top: 0;
                 height: 85vw;
@@ -442,7 +474,7 @@
             z-index: $z-index-front-1;
         }
 
-        @media (min-width: $media-tablet) {
+        @media (min-width: $media-width-tablet) {
             @include full-width-bg($color-none, $pseudoelement-after: true) {
                 background-image: url('../assets/images/bg-yellow-waves.png');
                 background-position: bottom left -10vw;

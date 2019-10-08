@@ -21,7 +21,7 @@
         font-size: $baseunit * 0.857;
     }
 
-    @media (min-width: $media-tablet) {
+    @media (min-width: $media-width-tablet) {
         &--large {
             font-size: $baseunit * 1.25;
         }
@@ -43,15 +43,19 @@
     &--3 {
         font-size: $baseunit * 1.429;
     }
+    &--4 {
+        font-size: $baseunit * 1.25;
+    }
 
-    @media (min-width: $media-tablet) {
+    @media (min-width: $media-width-tablet) {
         &--1 {
             font-size: $baseunit * 2.5;
         }
         &--2 {
             font-size: $baseunit * 1.875;
         }
-        &--3 {
+        &--3,
+        &--4 {
             font-size: $baseunit * 1.25;
         }
     }

@@ -16,21 +16,26 @@
     </head>
     <body>
         <nav class="nav">
-            <a href="#">
-                <img
-                    class="nav__logo"
-                    src="assets/images/logo-with-text.png"
-                    alt="Docs for Health logo"
-                />
-            </a>
-            <ul class="nav__links">
-                <li class="nav__link">
-                    <a class="link link--nav" href="#">Resources</a>
-                </li>
-                <li class="nav__link">
-                    <a class="link link--nav" href="#">Toolkits</a>
-                </li>
-            </ul>
+            <div class="nav__contents">
+                <a href="#">
+                    <img
+                        class="nav__logo"
+                        src="assets/images/logo-with-text.png"
+                        alt="Docs for Health logo"
+                    />
+                </a>
+                <button type="button" class="nav__menu-toggle"></button>
+            </div>
+            <div class="nav__links-container">
+                <ul class="nav__links">
+                    <li>
+                        <a class="nav__link" href="#">Resources</a>
+                    </li>
+                    <li>
+                        <a class="nav__link" href="#">Toolkits</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <header class="landing-header">
             <div class="landing-header__container">

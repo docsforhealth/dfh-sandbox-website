@@ -37,7 +37,8 @@ $z-index-reset: 0; // create new stacking context
 $z-index-behind-1: -5;
 $z-index-behind-2: -10;
 
-// TODO
-$media-tablet: 768px;
-$media-laptop: 1024px;
-$media-desktop: 1440px;
+$media-height-actual-tablet: 500px; // screen out mobile landscape
+$media-width-landscape-medium-mobile: 667px; // iPhone 6 Plus
+$media-width-landscape-large-mobile: 812px; // iPhone X and Pixel 2 XL
+$media-width-tablet: 768px;
+$media-width-laptop: 1024px;

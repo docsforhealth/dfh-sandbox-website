@@ -3,7 +3,7 @@
     padding-left: $baseunit;
     padding-right: $baseunit;
 
-    @media (min-width: $media-tablet) {
+    @media (min-width: $media-width-tablet) {
         width: 50 * $baseunit;
         margin: 0 auto;
         padding-left: 0;
@@ -13,7 +13,7 @@
             width: 40 * $baseunit;
         }
     }
-    @media (min-width: $media-laptop) {
+    @media (min-width: $media-width-laptop) {
         width: 68 * $baseunit;
 
         &--narrow {
@@ -30,7 +30,7 @@
             margin-top: $baseunit * 0.5;
         }
 
-        @media (min-width: $media-tablet) {
+        @media (min-width: $media-width-tablet) {
             width: auto;
 
             & + & {
@@ -40,7 +40,7 @@
         }
     }
 
-    @media (min-width: $media-tablet) {
+    @media (min-width: $media-width-tablet) {
         // ensure that buttons stay on same line
         display: flex;
     }
@@ -51,24 +51,85 @@
     @include full-width-bg($color-seafoam);
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: $height-nav;
+    flex-wrap: wrap;
+    min-height: $height-nav;
+    flex-direction: column-reverse;
 
+    &--open &__menu-toggle {
+        background-image: url('../assets/images/icon-close.svg');
+    }
+    &--open &__links {
+        @include full-width-bg($color-gold-light-2) {
+            border-bottom: $baseunit solid $color-gold-light-1;
+        }
+    }
+
+    &__contents {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: $height-nav;
+    }
     &__logo {
         width: $width-logo;
         margin-top: $height-nav * 0.02;
     }
+    &__menu-toggle {
+        background-image: url('../assets/images/icon-menu.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: $height-control;
+        width: $height-control;
+    }
+    // toggle mobile nav with jQuery
+    &__links-container {
+        display: none;
+    }
     &__links {
-        display: none; // TODO
+        @include scut-list-unstyled;
+
+        display: flex;
+        flex-direction: column;
+        padding: $baseunit 0 ($baseunit * 2);
+        transition: max-height 0.5s;
+    }
+    &__link {
+        @extend .heading--4;
+
+        display: block;
+        padding: $baseunit 0;
+        color: $color-navy;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
-    @media (min-width: $media-tablet) {
-        &__links {
-            @include scut-list-unstyled;
-            display: flex;
+    @media (min-width: $media-width-tablet) {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        height: $height-nav;
+
+        &__menu-toggle {
+            display: none;
         }
-        &__link:not(:last-child) {
+        &__links-container {
+            // Add `!important` to override jQuery animation inline style, if present
+            display: block !important;
+        }
+        &__links {
+            flex-direction: row;
+            padding: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+        &__link {
             margin-right: $baseunit;
         }
     }
@@ -109,7 +170,7 @@
         font-weight: $font-weight-bold;
     }
 
-    @media (min-width: $media-tablet) {
+    @media (min-width: $media-width-tablet) {
         flex-wrap: nowrap;
 
         &__content {
