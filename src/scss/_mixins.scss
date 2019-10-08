@@ -2,7 +2,7 @@
     position: relative;
 
     // See https://css-tricks.com/full-width-containers-limited-width-parents/#article-header-id-6
-    &:#{if($pseudoelement-after, "after", "before")} {
+    &:#{if($pseudoelement-after, 'after', 'before')} {
         content: '';
         position: absolute;
         top: 0;
@@ -17,4 +17,11 @@
         pointer-events: none;
         @content;
     }
+}
+
+@mixin card-bg {
+    background-color: $color-white;
+    border: 1px solid $color-gray-light-1;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.12);
+    border-radius: $border-radius;
 }

@@ -27,6 +27,7 @@
     @extend .text--large;
 
     height: $height-control;
+    width: auto;
     max-width: 100%;
     padding: 0 ($baseunit * 1.5);
     background-color: $color-navy;
@@ -40,10 +41,6 @@
         background-color: $color-none;
         color: $color-navy;
     }
-
-    & + & {
-        margin-left: $baseunit * 0.5;
-    }
 }
 
 .form {
@@ -54,13 +51,15 @@
         width: 100%;
         min-width: 0;
 
-        &--half {
-            width: 50%;
-            padding-right: $offset-form-item * 2;
+        @media (min-width: $media-tablet) {
+            &--half {
+                width: 50%;
+                padding-right: $offset-form-item-2 * 2;
 
-            & + & {
-                padding-right: 0;
-                padding-left: $offset-form-item * 2;
+                & + & {
+                    padding-right: 0;
+                    padding-left: $offset-form-item-2 * 2;
+                }
             }
         }
     }
@@ -72,11 +71,11 @@
         margin-bottom: $baseunit * 0.5;
     }
     &__control {
+        width: calc(100% + #{$offset-form-item-1 * 2});
+        margin-left: $offset-form-item-1 * -1;
         min-height: $height-control;
-        width: calc(100% + #{$offset-form-item * 2});
-        margin-left: $offset-form-item * -1;
         margin-bottom: $baseunit;
-        padding: $offset-form-item;
+        padding: ($offset-form-item-1 * 1.5) $offset-form-item-1;
         border: 1px solid $color-seafoam-dark-1;
         border-radius: $border-radius;
 
@@ -84,6 +83,12 @@
         &:focus,
         &:active {
             border-color: $color-seafoam-dark-2;
+        }
+
+        @media (min-width: $media-tablet) {
+            width: calc(100% + #{$offset-form-item-2 * 2});
+            margin-left: $offset-form-item-2 * -1;
+            padding: $offset-form-item-2;
         }
     }
 }

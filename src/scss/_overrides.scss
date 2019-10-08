@@ -4,3 +4,12 @@ html {
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
 }
+
+// Removes box shadow on iOS
+// see: https://www.abeautifulsite.net/how-to-remove-box-shadows-from-input-controls-on-ios
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+    -webkit-appearance: none;
+}

@@ -23,7 +23,8 @@ $height-control: $baseunit * 3;
 
 $width-logo: $baseunit * 14;
 
-$offset-form-item: $baseunit * 0.7;
+$offset-form-item-1: $baseunit * 0.5;
+$offset-form-item-2: $baseunit * 0.7;
 
 $font-weight-normal: 400;
 $font-weight-bold: 600; // actually is semi-bold
@@ -35,3 +36,8 @@ $z-index-front-1: 5;
 $z-index-reset: 0; // create new stacking context
 $z-index-behind-1: -5;
 $z-index-behind-2: -10;
+
+// TODO
+$media-tablet: 768px;
+$media-laptop: 1024px;
+$media-desktop: 1440px;

@@ -1,9 +1,48 @@
 .container {
-    width: 68 * $baseunit;
-    margin: 0 auto;
+    width: 100%;
+    padding-left: $baseunit;
+    padding-right: $baseunit;
 
-    &--narrow {
-        width: 45 * $baseunit;
+    @media (min-width: $media-tablet) {
+        width: 50 * $baseunit;
+        margin: 0 auto;
+        padding-left: 0;
+        padding-right: 0;
+
+        &--narrow {
+            width: 40 * $baseunit;
+        }
+    }
+    @media (min-width: $media-laptop) {
+        width: 68 * $baseunit;
+
+        &--narrow {
+            width: 45 * $baseunit;
+        }
+    }
+}
+
+.button-container {
+    &__button {
+        width: 100%;
+
+        & + & {
+            margin-top: $baseunit * 0.5;
+        }
+
+        @media (min-width: $media-tablet) {
+            width: auto;
+
+            & + & {
+                margin-top: 0;
+                margin-left: $baseunit * 0.5;
+            }
+        }
+    }
+
+    @media (min-width: $media-tablet) {
+        // ensure that buttons stay on same line
+        display: flex;
     }
 }
 
@@ -21,11 +60,17 @@
         margin-top: $height-nav * 0.02;
     }
     &__links {
-        @include scut-list-unstyled;
-        display: flex;
+        display: none; // TODO
     }
-    &__link:not(:last-child) {
-        margin-right: $baseunit;
+
+    @media (min-width: $media-tablet) {
+        &__links {
+            @include scut-list-unstyled;
+            display: flex;
+        }
+        &__link:not(:last-child) {
+            margin-right: $baseunit;
+        }
     }
 }
 
@@ -37,11 +82,15 @@
     }
 
     display: flex;
-    padding: ($baseunit * 4) 0 ($baseunit * 3);
+    flex-wrap: wrap;
+    padding-top: $baseunit * 4;
+    padding-bottom: $baseunit * 3;
+    z-index: $z-index-front-1;
 
     &__content {
-        width: 50%;
-        min-width: 0;
+        & + & {
+            margin-top: $baseunit * 2;
+        }
     }
     &__logo {
         width: $width-logo;
@@ -52,21 +101,35 @@
 
         display: flex;
         flex-wrap: wrap;
-        margin-left: $width-logo * 0.3;
     }
     &__link {
+        width: 100%;
+        margin-top: $baseunit;
         color: $color-navy;
         font-weight: $font-weight-bold;
+    }
 
-        &:not(:last-child) {
-            margin-right: $baseunit;
+    @media (min-width: $media-tablet) {
+        flex-wrap: nowrap;
+
+        &__content {
+            width: 50%;
+            min-width: 0;
+
+            & + & {
+                margin-top: 0;
+            }
+        }
+        &__links {
+            margin-left: $width-logo * 0.3;
+        }
+        &__link {
+            width: auto;
+            margin-top: 0;
+
+            &:not(:last-child) {
+                margin-right: $baseunit;
+            }
         }
     }
-}
-
-.card {
-    background-color: $color-white;
-    border: 1px solid $color-gray-light-1;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.12);
-    border-radius: $border-radius;
 }
