@@ -47,7 +47,7 @@ module.exports = {
             {
                 test: /\.ejs$/,
                 exclude: /node_modules/,
-                use: ['extract-loader', 'html-loader', 'ejs-loader'],
+                use: ['extract-loader', 'html-loader', 'ejs-compiled-loader'],
             },
         ],
     },
@@ -57,6 +57,18 @@ module.exports = {
             hash: true,
             template: './src/index.ejs',
             filename: 'index.html',
+        }),
+        new HTMLWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/resources.ejs',
+            filename: 'resources.html',
+        }),
+        new HTMLWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/resource.ejs',
+            filename: 'resource.html',
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'

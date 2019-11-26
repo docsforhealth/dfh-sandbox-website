@@ -7,7 +7,10 @@
 @import 'scss/mixins';
 
 @import 'scss/controls';
-@import 'scss/landing';
+@import 'scss/elements';
 @import 'scss/structure';
 @import 'scss/typography';
 @import 'scss/utils';
+
+@import 'scss/pages/landing';
+@import 'scss/pages/resources';

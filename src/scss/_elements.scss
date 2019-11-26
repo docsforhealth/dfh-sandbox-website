@@ -1,0 +1,99 @@
+.button-container {
+    &__button {
+        width: 100%;
+
+        & + & {
+            margin-top: $baseunit * 0.5;
+        }
+
+        @media (min-width: $media-width-tablet) {
+            width: auto;
+
+            & + & {
+                margin-top: 0;
+                margin-left: $baseunit * 0.5;
+            }
+        }
+    }
+
+    @media (min-width: $media-width-tablet) {
+        // ensure that buttons stay on same line
+        display: flex;
+    }
+}
+
+.tag {
+    @include scut_truncate;
+
+    display: inline-block;
+    padding: ($baseunit * 0.1) ($baseunit * 0.5) ($baseunit * 0.15);
+    color: $color-gray;
+    border: 1px solid $color-seafoam-dark-2;
+    border-radius: $border-radius;
+
+    & + & {
+        margin-left: $baseunit * 0.2;
+    }
+
+    &--notable {
+        border-color: $color-navy-light-1;
+        background-color: $color-navy-light-2;
+    }
+}
+
+.load-more {
+    @extend .heading--4;
+
+    padding: ($baseunit * 2) 0;
+    text-align: center;
+    font-weight: $font-weight-bold;
+    color: $color-navy;
+}
+
+.feedback-card {
+    $horizontal-small-offset: $baseunit;
+    $horizontal-larger-offset: $baseunit * 2;
+
+    @extend .container;
+    @include full-width-bg(transparent) {
+        @include card-bg;
+
+        left: 0;
+        margin-left: 0;
+        border-radius: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    padding: ($baseunit * 2) 0;
+
+    &__info {
+        margin-bottom: $baseunit * 2;
+    }
+
+    @media (min-width: $media-width-tablet) {
+        flex-direction: row;
+        margin-bottom: $baseunit * 3;
+
+        &:before {
+            width: calc(100% + #{$horizontal-small-offset * 2});
+            margin-left: $horizontal-small-offset * -1;
+            border-radius: $border-radius;
+        }
+
+        &__info {
+            width: 50%;
+            padding-right: $baseunit * 3;
+            margin-bottom: 0;
+        }
+    }
+    @media (min-width: $media-width-laptop) {
+        &:before {
+            width: calc(100% + #{$horizontal-larger-offset * 2});
+            margin-left: $horizontal-larger-offset * -1;
+        }
+        &__info {
+            width: 40%;
+        }
+    }
+}
