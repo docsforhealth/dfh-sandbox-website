@@ -47,19 +47,6 @@
         font-size: $baseunit * 1.25;
     }
 
-    @media (min-width: $media-width-tablet) {
-        &--1 {
-            font-size: $baseunit * 2.5;
-        }
-        &--2 {
-            font-size: $baseunit * 1.875;
-        }
-        &--3,
-        &--4 {
-            font-size: $baseunit * 1.25;
-        }
-    }
-
     &__title {
         display: inline-block;
         position: relative;
@@ -82,7 +69,8 @@
             opacity: 0.8;
         }
     }
-    &__subtitle {
+    &__subtitle,
+    &__nav {
         @include scut_truncate;
 
         display: block;
@@ -94,5 +82,55 @@
     }
     &__title + &__subtitle {
         margin-top: $baseunit * 0.65;
+    }
+    &__nav {
+        @extend .link;
+
+        display: flex;
+        align-items: center;
+        height: $height-control-small;
+        margin-bottom: $baseunit * 0.5;
+        font-size: $baseunit;
+
+        & > * + * {
+            margin-left: $baseunit * 0.5;
+        }
+
+        &__image {
+            height: 80%;
+        }
+        &__text {
+            color: $color-navy;
+        }
+    }
+
+    @media (min-width: $media-width-tablet) {
+        &--1 {
+            font-size: $baseunit * 2.5;
+        }
+        &--2 {
+            font-size: $baseunit * 1.875;
+        }
+        &--3,
+        &--4 {
+            font-size: $baseunit * 1.25;
+        }
+    }
+    @media (min-width: $media-width-desktop) {
+        position: relative;
+
+        &__nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(calc(-100% - #{$baseunit}), -50%);
+
+            &__image {
+                height: 100%;
+            }
+            &__text {
+                display: none;
+            }
+        }
     }
 }

@@ -14,8 +14,8 @@
 
 .button {
     @include scut-truncate;
-    @extend .text--large;
 
+    display: block;
     height: $height-control;
     width: auto;
     max-width: 100%;
@@ -25,11 +25,30 @@
     border: 1px solid $color-navy;
     border-radius: $border-radius;
     font-weight: $font-weight-bold;
+    line-height: $height-control;
     text-align: center;
+    text-decoration: none;
 
+    &:not(&--small) {
+        @extend .text--large;
+    }
+    &--small {
+        height: $height-control-small;
+        line-height: $height-control-small;
+    }
+    &--secondary {
+        background-color: $color-gold;
+        color: $color-gray-dark-1;
+        border-color: $color-gold-dark-1;
+    }
     &--outline {
         background-color: $color-none;
         color: $color-navy;
+
+        &.button--secondary {
+            background-color: $color-none;
+            color: $color-gray-dark-1;
+        }
     }
 }
 

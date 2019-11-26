@@ -23,6 +23,7 @@ $baseunit: 1rem;
 
 $height-nav: $baseunit * 5;
 $height-control: $baseunit * 3;
+$height-control-small: $height-control * 0.7;
 
 $width-logo: $baseunit * 14;
 
@@ -47,3 +48,4 @@ $media-width-landscape-medium-mobile: 667px; // iPhone 6 Plus
 $media-width-tablet: 768px; // iPad
 $media-width-landscape-large-mobile: 812px; // iPhone X and Pixel 2 XL
 $media-width-laptop: 1024px;
+$media-width-desktop: 1280px;

@@ -8,8 +8,7 @@
     <title>Docs for Health</title>
     <%- include src/partials/header.ejs %>
 </head>
-<body>
-    <%- include src/partials/nav.ejs %>
+<%- include src/partials/start.ejs %>
     <header class="landing-header">
         <div class="landing-header__container">
             <h1 class="heading heading--1">
@@ -20,9 +19,9 @@
                 supports our vulnerable patients
             </p>
             <div class="button-container">
-                <button type="button" class="button-container__button button">
+                <a href="/resources.html" class="button-container__button button">
                     Show me the resources
-                </button>
+                </a>
                 <button type="button" class="button-container__button button button--outline">
                     Get in touch
                 </button>
@@ -171,15 +170,16 @@
                             challenge.
                         </p>
                         <div class="button-container">
-                            <button type="button" class="button-container__button button button--outline">
+                            <a href="/resources.html"
+                                class="button-container__button button button--outline">
                                 View all resources
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <ul class="landing-categories__slide__examples">
                         <li class="landing-categories__slide__example">
                             <h4 class="heading heading--3">
-                                <a href="#" class="link"
+                                <a href="/resource.html" class="link"
                                     >Reasonable accommodation request</a
                                 >
                             </h4>
@@ -190,7 +190,7 @@
                         </li>
                         <li class="landing-categories__slide__example">
                             <h4 class="heading heading--3">
-                                <a href="#" class="link"
+                                <a href="/resource.html" class="link"
                                     >Emotional support animal</a
                                 >
                             </h4>
@@ -202,7 +202,7 @@
                         </li>
                         <li class="landing-categories__slide__example">
                             <h4 class="heading heading--3">
-                                <a href="#" class="link"
+                                <a href="/resource.html" class="link"
                                     >Prevention of utilities shut-off</a
                                 >
                             </h4>
@@ -265,6 +265,5 @@
             </p>
         </div>
     </section>
-    <%- include src/partials/footer.ejs %>
-</body>
+<%- include src/partials/end.ejs %>
 </html>

@@ -5,8 +5,17 @@
         & + & {
             margin-top: $baseunit * 0.5;
         }
+    }
 
-        @media (min-width: $media-width-tablet) {
+    @media (min-width: $media-width-landscape-small-mobile) {
+        // ensure that buttons stay on same line
+        display: flex;
+
+        &--expand-width &__button {
+            width: 100%;
+        }
+
+        &__button {
             width: auto;
 
             & + & {
@@ -14,11 +23,6 @@
                 margin-left: $baseunit * 0.5;
             }
         }
-    }
-
-    @media (min-width: $media-width-tablet) {
-        // ensure that buttons stay on same line
-        display: flex;
     }
 }
 
@@ -52,7 +56,7 @@
 
 .feedback-card {
     $horizontal-small-offset: $baseunit;
-    $horizontal-larger-offset: $baseunit * 2;
+    $horizontal-larger-offset: $baseunit * 1.5;
 
     @extend .container;
     @include full-width-bg(transparent) {

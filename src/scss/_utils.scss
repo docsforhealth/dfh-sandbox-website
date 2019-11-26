@@ -1,4 +1,8 @@
 .margin-b {
+    &-1,
+    &-1:last-of-type {
+        margin-bottom: $baseunit;
+    }
     &-2,
     &-2:last-of-type {
         margin-bottom: $baseunit * 2;
@@ -11,4 +15,8 @@
 
 .text-center {
     text-align: center;
+}
+
+.unstyled-list {
+    @include scut-list-unstyled;
 }
