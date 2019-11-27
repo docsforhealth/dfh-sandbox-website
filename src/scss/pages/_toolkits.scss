@@ -103,3 +103,168 @@
         }
     }
 }
+.toolkit {
+    $topic-list-right-padding: $baseunit;
+
+    &-detail-container {
+        @extend .container;
+
+        display: flex;
+        padding: $baseunit 0;
+
+        &__item {
+            min-width: 0;
+
+            &--list {
+                flex-shrink: 0;
+                width: 30%;
+                padding-right: $topic-list-right-padding;
+                margin-right: $baseunit * 2;
+                border-right: 1px solid $color-seafoam-dark-2;
+            }
+        }
+        &__header {
+            padding: $baseunit 0 ($baseunit * 0.5);
+            border-bottom: 1px solid $color-seafoam-dark-2;
+        }
+
+        @media (min-width: $media-width-tablet) {
+            &__header {
+                position: sticky;
+                top: 0;
+                background-color: $color-white;
+                z-index: $z-index-front-2;
+            }
+            &__item--list &__header {
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 100%;
+                    height: 100%;
+                    width: $baseunit * 5;
+                    background-color: $color-white;
+                }
+            }
+        }
+    }
+
+    &-topics {
+        &__toggle {
+            display: none;
+            // TODO
+        }
+        &__list {
+            @include scut-list-unstyled;
+        }
+        &__active {
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 100%;
+                height: $topic-list-right-padding * 2;
+                width: $topic-list-right-padding * 2;
+                background-color: $color-white;
+                border: 1px solid $color-seafoam-dark-2;
+                border-left-width: 0;
+                border-bottom-width: 0;
+                border-top-right-radius: $border-radius;
+                transform: translateY(-50%) rotate(45deg);
+            }
+        }
+        &__topic {
+            $indicator-size: $baseunit * 0.75;
+            $offset-from-top: $baseunit * 1.3;
+            $offset-from-left: $baseunit * 1.5;
+
+            position: relative;
+            padding: ($baseunit * 0.75) 0;
+            border-bottom: 1px solid $color-seafoam-dark-1;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: $offset-from-top;
+                left: $offset-from-left * -1;
+                height: 100%;
+                border-left: 1px dashed $color-navy-light-1;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: $offset-from-top;
+                left: $offset-from-left * -1;
+                transform: translateX(-50%);
+                height: $indicator-size;
+                width: $indicator-size;
+                background-color: $color-white;
+                border-radius: 100%;
+                border: 1px solid $color-navy-light-1;
+                z-index: $z-index-front-1;
+            }
+            &:last-of-type {
+                border-bottom-width: 0;
+
+                &:before {
+                    display: none;
+                }
+            }
+
+            &--visited {
+                &:before {
+                    border-left-style: solid;
+                    border-color: $color-navy;
+                }
+                &:after {
+                    background-color: $color-navy;
+                    border-color: $color-navy;
+                }
+            }
+            &--current {
+                font-weight: $font-weight-bold;
+
+                &:after {
+                    border-color: $color-navy;
+                }
+            }
+        }
+    }
+}
+
+.toolkit-active-topic {
+    &__header {
+        display: flex;
+        align-items: baseline;
+
+        & > * {
+            min-width: 0;
+        }
+        &__presenter {
+            @extend .text;
+            @extend .text--light;
+            @include scut_truncate;
+
+            flex-shrink: 0;
+            margin-left: $baseunit;
+        }
+    }
+    &__video {
+        margin: $baseunit 0;
+        border: 1px solid $color-seafoam-dark-1;
+        border-radius: $border-radius;
+        cursor: pointer;
+    }
+    &__controls {
+        display: block;
+        margin: ($baseunit * 3) 0 ($baseunit * 2);
+    }
+
+    @media (min-width: $media-width-tablet) {
+        &__controls {
+            display: none;
+        }
+    }
+}

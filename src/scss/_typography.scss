@@ -10,10 +10,20 @@
 }
 
 .text {
-    color: $color-gray-dark-1;
     font-size: $baseunit;
     line-height: normal;
 
+    &--one-line {
+        @include scut-truncate;
+
+        display: block;
+    }
+    &--bold {
+        font-weight: $font-weight-bold
+    }
+    &--light {
+        color: $color-gray;
+    }
     &--large {
         font-size: $baseunit * 1;
     }
@@ -33,9 +43,16 @@
 
 .heading {
     margin-bottom: $baseunit;
-    color: $color-gray-dark-1;
     font-weight: $font-weight-normal;
 
+    &--one-line {
+        @include scut-truncate;
+
+        display: block;
+    }
+    &--bold {
+        font-weight: $font-weight-bold
+    }
     &--1 {
         font-size: $baseunit * 1.786;
     }
