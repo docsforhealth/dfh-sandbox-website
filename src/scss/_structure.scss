@@ -158,6 +158,9 @@
         }
     }
     @media (min-width: $media-width-laptop) {
+        &__form {
+            max-width: 70%;
+        }
         &__metadata--secondary {
             display: block;
         }
@@ -174,8 +177,8 @@
         width: 50 * $baseunit;
         margin-left: auto;
         margin-right: auto;
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
 
         &--narrow {
             width: 40 * $baseunit;

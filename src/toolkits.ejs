@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>All Toolkits | Docs for Health</title>
+    <%- include src/partials/header.ejs %>
+</head>
+<%- include src/partials/start.ejs %>
+    <div class="page-header">
+        <div class="page-header__section">
+            <h1 class="heading heading--2">
+                <span class="heading__title">Toolkits</span>
+            </h1>
+            <p class="page-header__metadata">
+                Found 1 of 1 toolkit
+            </p>
+        </div>
+        <div class="page-header__section page-header__section--right">
+            <div class="form form--inline page-header__form">
+                <input type="text"
+                    class="form__control form__control--search"
+                    placeholder="Search for a toolkit">
+            </div>
+        </div>
+    </div>
+    <ul class="unstyled-list container">
+        <li class="toolkit-preview">
+            <div class="toolkit-preview__info">
+                <div class="toolkit-preview__header">
+                    <h2 class="heading heading--3">
+                        <a href="/toolkit.html" class="link">Buprenorphine Basics</a>
+                    </h2>
+                    <ul class="toolkit-preview__header__metadata">
+                        <li class="tag">10 videos</li>
+                        <li class="tag">50 minutes</li>
+                    </ul>
+                </div>
+                <p class="text">
+                    From receiving a buprenorphine waiver to prescribing buprenorphine on the ground, the Buprenorphine Basics Toolkit supports those new to prescribing buprenorphine with short video demonstrations of the knowledge and tools necessary for every step of buprenorphine use in a clinical setting.
+                </p>
+            </div>
+            <button type="button" class="toolkit-preview__video">
+                <img class="toolkit-preview__video__image"
+                    src="assets/images/placeholder-video-preview-1.png"
+                    alt="An introduction to prescribing Buprenorphine video thumbnail">
+                <span class="toolkit-preview__video__control">Preview</span>
+            </button>
+        </li>
+        <li class="toolkit-preview">
+            <div class="toolkit-preview__info">
+                <div class="toolkit-preview__header">
+                    <h2 class="heading heading--3">
+                        <a href="/toolkit.html" class="link">Buprenorphine Deep Dive</a>
+                    </h2>
+                    <ul class="toolkit-preview__header__metadata">
+                        <li class="tag">14 videos</li>
+                        <li class="tag">2 hours</li>
+                    </ul>
+                </div>
+                <p class="text">
+                    For practitioners who have had some experience prescribing buprenorphine on the ground, the Buprenorphine Deep Dive Toolkit presents evidence-based best practices and robust clinical and ethical reasoning scenarios for further refinement of buprenorphine practices.
+                </p>
+            </div>
+            <button type="button" class="toolkit-preview__video">
+                <img class="toolkit-preview__video__image"
+                    src="assets/images/placeholder-video-preview-1b.png"
+                    alt="An introduction to prescribing Buprenorphine video thumbnail">
+                <span class="toolkit-preview__video__control">Preview</span>
+            </button>
+        </li>
+    </ul>
+    <%- include src/partials/feedback-loading-card.ejs %>
+<%- include src/partials/end.ejs %>
+</html>

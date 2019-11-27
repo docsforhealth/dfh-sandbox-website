@@ -55,9 +55,6 @@
 }
 
 .feedback-card {
-    $horizontal-small-offset: $baseunit;
-    $horizontal-larger-offset: $baseunit * 1.5;
-
     @extend .container;
     @include full-width-bg(transparent) {
         @include card-bg;
@@ -80,8 +77,8 @@
         margin-bottom: $baseunit * 3;
 
         &:before {
-            width: calc(100% + #{$horizontal-small-offset * 2});
-            margin-left: $horizontal-small-offset * -1;
+            width: calc(100% + #{$unit-horizontal-overhang-small * 2});
+            margin-left: $unit-horizontal-overhang-small * -1;
             border-radius: $border-radius;
         }
 
@@ -93,8 +90,8 @@
     }
     @media (min-width: $media-width-laptop) {
         &:before {
-            width: calc(100% + #{$horizontal-larger-offset * 2});
-            margin-left: $horizontal-larger-offset * -1;
+            width: calc(100% + #{$unit-horizontal-overhang * 2});
+            margin-left: $unit-horizontal-overhang * -1;
         }
         &__info {
             width: 40%;

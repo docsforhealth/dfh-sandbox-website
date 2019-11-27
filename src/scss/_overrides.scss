@@ -13,3 +13,9 @@ input[type=password],
 textarea {
     -webkit-appearance: none;
 }
+
+// eliminates white-space under `img`
+// see: https://stackoverflow.com/a/14720811
+img {
+    vertical-align: bottom;
+}

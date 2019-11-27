@@ -70,6 +70,18 @@ module.exports = {
             template: './src/resource.ejs',
             filename: 'resource.html',
         }),
+        new HTMLWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/toolkits.ejs',
+            filename: 'toolkits.html',
+        }),
+        new HTMLWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/toolkit.ejs',
+            filename: 'toolkit.html',
+        }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         }),

@@ -103,30 +103,6 @@
             </li>
         <% }); %>
     </ul>
-    <div class="load-more">
-        Loading...
-        <!-- TODO -->
-        <!-- <img src="" alt="Loading indicator"> -->
-    </div>
-    <div class="feedback-card">
-        <div class="feedback-card__info">
-            <h3 class="heading heading--3">
-                <span class="heading__title">Did we miss something?</span>
-            </h3>
-            <p class="text">
-                We are consistently developing new resources to help providers support patients’ social determinants of health.
-            </p>
-            <p class="text">
-                Please fill out the form with your suggestions or email us directly at
-                <a class="link"
-                    href="mailto:community@docsforhealth.org">
-                    community@docsforhealth.org
-                </a>
-            </p>
-        </div>
-        <form class="form" action="">
-            <%- include src/partials/contact-form-body.ejs %>
-        </form>
-    </div>
+    <%- include src/partials/feedback-loading-card.ejs %>
 <%- include src/partials/end.ejs %>
 </html>
