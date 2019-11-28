@@ -41,14 +41,10 @@
         color: $color-gray-dark-1;
         border-color: $color-gold-dark-1;
     }
-    &--outline {
+    &--outline, &--outline.button--secondary {
         background-color: $color-none;
         color: $color-navy;
-
-        &.button--secondary {
-            background-color: $color-none;
-            color: $color-gray-dark-1;
-        }
+        border-color: $color-navy-light-1;
     }
 }
 

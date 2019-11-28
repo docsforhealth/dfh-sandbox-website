@@ -91,8 +91,9 @@
                 </h1>
             </div>
             <div class="toolkit-topics">
-                <button type="button" class="toolkit-topics__toggle">
-                    Show all <% topics.length %> sections
+                <button type="button"
+                    class="toolkit-topics__toggle button button--small button--outline button--secondary">
+                    Show all <%= topics.length %> sections
                 </button>
                 <ol class="toolkit-topics__list">
                     <% topics.forEach(function(topic, index) { %>
@@ -117,7 +118,7 @@
         <div class="toolkit-detail-container__item toolkit-active-topic">
             <div class="toolkit-detail-container__header toolkit-active-topic__header">
                 <h2 class="heading heading--3 heading--one-line">
-                    <%= topics[currentIndex].title %>
+                    <%= currentIndex%>. <%= topics[currentIndex].title %>
                 </h2>
                 <p class="toolkit-active-topic__header__presenter">
                     <%= topics[currentIndex].presenter %>
@@ -125,7 +126,8 @@
             </div>
             <div class="toolkit-active-topic__video">
                 <!-- Due to limitation in compilation, need to hardcode for styling -->
-                <img src="assets/images/placeholder-video-preview-2.png"
+                <img class="toolkit-active-topic__video__image"
+                    src="assets/images/placeholder-video-preview-2.png"
                     alt="<%= topics[currentIndex].title %> video thumbnail">
             </div>
             <div class="margin-b-1">
@@ -142,7 +144,7 @@
             <h3 class="heading heading--3">
                 <span class="heading__title">Further reading</span>
             </h3>
-            <ul>
+            <ul class="list">
                 <% topics[currentIndex].resources.forEach(function(resource) { %>
                     <li>
                         <a href="<%= resource.url %>" class="link">
@@ -151,15 +153,17 @@
                     </li>
                 <% }); %>
             </ul>
-            <div class="toolkit-active-topic__controls button-container button-container--expand-width">
-                <button type="button"
-                    class="button-container__button button button--outline">
-                    Back
-                </button>
-                <button type="button"
-                    class="button-container__button button button--secondary">
-                    Next
-                </button>
+            <div class="toolkit-active-topic__controls">
+                <div class="button-container button-container--expand-width">
+                    <button type="button"
+                        class="button-container__button button button--outline">
+                        Back
+                    </button>
+                    <button type="button"
+                        class="button-container__button button button--secondary">
+                        Next
+                    </button>
+                </div>
             </div>
         </div>
     </div>

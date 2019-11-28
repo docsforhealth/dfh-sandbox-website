@@ -19,7 +19,7 @@
         display: block;
     }
     &--bold {
-        font-weight: $font-weight-bold
+        font-weight: $font-weight-bold;
     }
     &--light {
         color: $color-gray;
@@ -51,7 +51,7 @@
         display: block;
     }
     &--bold {
-        font-weight: $font-weight-bold
+        font-weight: $font-weight-bold;
     }
     &--1 {
         font-size: $baseunit * 1.786;
@@ -105,8 +105,9 @@
 
         display: flex;
         align-items: center;
-        height: $height-control-small;
-        margin-bottom: $baseunit * 0.5;
+        padding-bottom: $baseunit;
+        margin-bottom: $baseunit * 2;
+        border-bottom: 1px solid $color-seafoam-dark-1;
         font-size: $baseunit;
 
         & > * + * {
@@ -114,7 +115,7 @@
         }
 
         &__image {
-            height: 80%;
+            height: $height-control-small * 0.8;
         }
         &__text {
             color: $color-navy;
@@ -131,6 +132,14 @@
         &--3,
         &--4 {
             font-size: $baseunit * 1.25;
+        }
+
+        &__nav {
+            // Override previous styles
+            height: $height-control-small;
+            margin-bottom: $baseunit * 0.5;
+            padding-bottom: 0;
+            border-bottom-width: 0;
         }
     }
     @media (min-width: $media-width-desktop) {

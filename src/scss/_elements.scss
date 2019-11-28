@@ -26,6 +26,16 @@
     }
 }
 
+.list {
+    padding-left: $baseunit * 2;
+
+    &--unstyled {
+        @include scut-list-unstyled;
+
+        padding-left: 0;
+    }
+}
+
 .tag {
     @include scut_truncate;
 
