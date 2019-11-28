@@ -203,6 +203,9 @@
             }
         }
     }
+    @media (min-width: $media-width-desktop) {
+        padding: ($baseunit * 2) 0;
+    }
 }
 
 // From https://css-tricks.com/custom-list-number-styling/
