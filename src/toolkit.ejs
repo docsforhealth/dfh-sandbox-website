@@ -1,16 +1,24 @@
 <%
-    const currentIndex = 3;
     const topics = [
-        {
-            title: "Pre-test",
-        },
-        {
-            title: "An introduction to prescribing Buprenorphine",
-            presenter: "Rahul Vanjani, MD",
-        },
         {
             title: "Assessing patients for buprenorphine treatment",
             presenter: "Elizabeth Samuels, MD",
+            topics: ["pharmacology", "home induction", "office induction", "hospital induction", "COWS tool", "precipitated withdrawal"],
+            description: "With help from Tiffany, who works at Montefiore in the Bronx, I've compiled a list of topics. If the goal is for the videos to be no longer than 3-5 minutes, with 5-10 corresponding slides, my guess is that we may need to create multiple videos for some topics. Tiffany had suggested we start by focusing on the 8 topics that we deem most important, since there are 8 of us.",
+            resources: [
+                {
+                    title: "Brown Med's buprenorphine induction handbook",
+                    url: "#",
+                },
+                {
+                    title: "American Medical Association's guidelines for buprenorphine induction",
+                    url: "#",
+                },
+                {
+                    title: "CDC best practices for buprenorphine induction",
+                    url: "#",
+                },
+            ],
         },
         {
             title: "Buprenorphine induction",
@@ -35,33 +43,22 @@
         {
             title: "Buprenorphine maintenance",
             presenter: "Cheryl Monteiro, MD",
-        },
-        {
-            title: "Urine toxicology",
-            presenter: "Rachel Wightman, MD",
-        },
-        {
-            title: "Working with patients who have addiction",
-            presenter: "Laureen Berkowitz, MD",
-        },
-        {
-            title: "When to intensify treatment and/or transfer care to a higher level",
-            presenter: "Tiffany Lu, MD",
-        },
-        {
-            title: "Polysubstance use",
-            presenter: "Catherine Trimbur, MD",
-        },
-        {
-            title: "Mental illness",
-            presenter: "Rahul Vanjani, MD",
-        },
-        {
-            title: "Acute and chronic pain",
-            presenter: "Rahul Vanjani, MD",
-        },
-        {
-            title: "Post-test",
+            topics: ["pharmacology", "home induction", "office induction", "hospital induction", "COWS tool", "precipitated withdrawal"],
+            description: "With help from Tiffany, who works at Montefiore in the Bronx, I've compiled a list of topics. If the goal is for the videos to be no longer than 3-5 minutes, with 5-10 corresponding slides, my guess is that we may need to create multiple videos for some topics. Tiffany had suggested we start by focusing on the 8 topics that we deem most important, since there are 8 of us.",
+            resources: [
+                {
+                    title: "Brown Med's buprenorphine induction handbook",
+                    url: "#",
+                },
+                {
+                    title: "American Medical Association's guidelines for buprenorphine induction",
+                    url: "#",
+                },
+                {
+                    title: "CDC best practices for buprenorphine induction",
+                    url: "#",
+                },
+            ],
         },
     ];
 %>
@@ -74,7 +71,7 @@
 </head>
 <%- include src/partials/start.ejs %>
     <div class="toolkit-detail-container">
-        <div class="toolkit-detail-container__item toolkit-detail-container__item--list">
+        <div class="toolkit-detail-container__list">
             <div class="toolkit-detail-container__header">
                 <h1 class="heading heading--3">
                     <a href="/toolkits.html" class="heading__nav">
@@ -91,80 +88,131 @@
                 </h1>
             </div>
             <div class="toolkit-topics">
+                <ol class="toolkit-topics__unsequenced-list">
+                    <li class="toolkit-topics__section toolkit-topics__section--unsequenced">
+                        <a href="#" class="link toolkit-topics__section__control">
+                            <p class="text text--large text--one-line">
+                                Pre-test
+                            </p>
+                        </a>
+                    </li>
+                    <li class="toolkit-topics__section toolkit-topics__section--unsequenced">
+                        <a href="#" class="link toolkit-topics__section__control">
+                            <p class="text text--large text--one-line">
+                                Post-test
+                            </p>
+                        </a>
+                    </li>
+                </ol>
                 <button type="button"
                     class="toolkit-topics__toggle button button--small button--outline button--secondary">
                     Show all <%= topics.length %> sections
                 </button>
                 <ol class="toolkit-topics__list">
+                    <li class="toolkit-topics__section toolkit-topics__section--unsequenced">
+                        <a href="#" class="link toolkit-topics__section__control">
+                            <p class="text text--large text--one-line">
+                                Pre-test
+                            </p>
+                        </a>
+                    </li>
                     <% topics.forEach(function(topic, index) { %>
-                        <li class="toolkit-topics__topic
-                            <%= index < currentIndex ? "toolkit-topics__topic--visited" : "" %>
-                            <%= index === currentIndex ? "toolkit-topics__topic--current" : "" %>">
-                            <div class="<%= index === currentIndex ? "toolkit-topics__active" : "" %>">
-                                <a href="#" class="link">
-                                    <p class="text text--large text--one-line">
+                        <li class="toolkit-topics__section
+                                <%= index === (topics.length - 1) ? 'toolkit-topics__section--last-in-sequence' : '' %>"
+                            data-slick-nav-target-id="toolkit-detail-container"
+                            data-slick-nav-target-index="<%= index %>"
+                        >
+                            <div class="toolkit-topics__section__indicator-wrapper">
+                                <button type="button" class="toolkit-topics__section__control">
+                                    <div class="text text--large text--one-line">
                                         <%= topic.title %>
-                                    </p>
-                                </a>
-                                <p class="text text--one-line">
-                                    <%= topic.presenter ? topic.presenter : "" %>
-                                </p>
+                                    </div>
+                                    <div class="text text--one-line">
+                                        <%= topic.presenter ? topic.presenter : "" %>
+                                    </div>
+                                </button>
                             </div>
                         </li>
                     <% }); %>
+                    <li class="toolkit-topics__section toolkit-topics__section--unsequenced">
+                        <a href="#" class="link toolkit-topics__section__control">
+                            <p class="text text--large text--one-line">
+                                Post-test
+                            </p>
+                        </a>
+                    </li>
                 </ol>
             </div>
         </div>
-        <div class="toolkit-detail-container__item toolkit-active-topic">
-            <div class="toolkit-detail-container__header toolkit-active-topic__header">
-                <h2 class="heading heading--3 heading--one-line">
-                    <%= currentIndex%>. <%= topics[currentIndex].title %>
-                </h2>
-                <p class="toolkit-active-topic__header__presenter">
-                    <%= topics[currentIndex].presenter %>
-                </p>
-            </div>
-            <div class="toolkit-active-topic__video">
-                <!-- Due to limitation in compilation, need to hardcode for styling -->
-                <img class="toolkit-active-topic__video__image"
-                    src="assets/images/placeholder-video-preview-2.png"
-                    alt="<%= topics[currentIndex].title %> video thumbnail">
-            </div>
-            <div class="margin-b-1">
-                <p class="text">
-                    <span class="text--bold">This section covers</span>:
-                    <span class="text--light">
-                        <%= topics[currentIndex].topics.join(", ") %>
-                    </span>
-                </p>
-                <p class="text">
-                    <%= topics[currentIndex].description %>
-                </p>
-            </div>
-            <h3 class="heading heading--3">
-                <span class="heading__title">Further reading</span>
-            </h3>
-            <ul class="list">
-                <% topics[currentIndex].resources.forEach(function(resource) { %>
-                    <li>
-                        <a href="<%= resource.url %>" class="link">
-                            <%= resource.title %>
-                        </a>
-                    </li>
-                <% }); %>
-            </ul>
-            <div class="toolkit-active-topic__controls">
-                <div class="button-container button-container--expand-width">
-                    <button type="button"
-                        class="button-container__button button button--outline">
-                        Back
-                    </button>
-                    <button type="button"
-                        class="button-container__button button button--secondary">
-                        Next
-                    </button>
+        <div id="toolkit-detail-container"
+            class="toolkit-detail-container__item-container"
+            data-slick-active-class="toolkit-topics__section--active"
+            data-slick='<%= JSON.stringify({
+                adaptiveHeight: true,
+                arrows: false,
+            }) %>'
+        >
+            <% topics.forEach(function(topic, index) { %>
+                <div class="toolkit-section-topic">
+                    <div class="toolkit-detail-container__header toolkit-section-topic__header">
+                        <h2 class="heading heading--3 heading--one-line">
+                            <%= index + 1 %>. <%= topics[index].title %>
+                        </h2>
+                        <p class="toolkit-section-topic__header__presenter">
+                            <%= topics[index].presenter %>
+                        </p>
+                    </div>
+                    <div class="toolkit-section-topic__video">
+                        <!-- Due to limitation in compilation, need to hardcode for styling -->
+                        <img class="toolkit-section-topic__video__image"
+                            src="assets/images/placeholder-video-preview-2.png"
+                            alt="<%= topics[index].title %> video thumbnail">
+                    </div>
+                    <div class="margin-b-1">
+                        <p class="text">
+                            <span class="text--bold">This section covers</span>:
+                            <span class="text--light">
+                                <%= topics[index].topics.join(", ") %>
+                            </span>
+                        </p>
+                        <p class="text">
+                            <%= topics[index].description %>
+                        </p>
+                    </div>
+                    <h3 class="heading heading--4">
+                        Further reading
+                    </h3>
+                    <ul class="list">
+                        <% topics[index].resources.forEach(function(resource) { %>
+                            <li>
+                                <a href="<%= resource.url %>" class="link">
+                                    <%= resource.title %>
+                                </a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                    <div class="toolkit-section-topic__controls">
+                        <div class="button-container button-container--expand-width">
+                            <% if (index > 0) { %>
+                                <button type="button"
+                                    class="button-container__button button button--outline"
+                                    data-slick-nav-target-id="toolkit-detail-container"
+                                    data-slick-nav-method="slickPrev">
+                                    Back
+                                </button>
+                            <% } %>
+                            <% if (index < topics.length - 1) { %>
+                                <button type="button"
+                                    class="button-container__button button button--secondary"
+                                    data-slick-nav-target-id="toolkit-detail-container"
+                                    data-slick-nav-method="slickNext">
+                                    Next
+                                </button>
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <% }); %>
         </div>
     </div>
 

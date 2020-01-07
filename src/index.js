@@ -21,6 +21,15 @@ $(function() {
       $(targetSelector).slick('slickGoTo', targetIndex);
     },
   );
+  $('[data-slick-nav-target-id][data-slick-nav-method]').on(
+    'click',
+    function() {
+      const $this = $(this),
+        targetSelector = `#${$this.data('slickNavTargetId')}`,
+        targetMethod = $this.data('slickNavMethod');
+      $(targetSelector).slick(targetMethod);
+    },
+  );
 
   $('.nav__menu-toggle').on('click', function() {
     $('.nav').toggleClass('nav--open');
