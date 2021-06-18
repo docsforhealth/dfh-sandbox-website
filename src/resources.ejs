@@ -1,5 +1,28 @@
 <%
-    const categories = ["Housing", "Transportation", "Food", "Income support", "Criminalization"];
+    const sampleAnswer = "Some community resources have specific forms they require. Others do not so advocacy letters are more effective. We’ve included both of these types of resources on this page to cover the key community resources for patients in RI.";
+    const faq = [
+        {
+            question: "Forms versus letters?",
+            answer: sampleAnswer,
+        },
+        {
+            question: "What do I do with these forms or letters?",
+            answer: sampleAnswer,
+        },
+        {
+            question: "What if a form or letter is missing from this list?",
+            answer: sampleAnswer,
+        },
+        {
+            question: "What do I do with these forms or letters?",
+            answer: sampleAnswer,
+        },
+        {
+            question: "What if a form or letter is missing from this list?",
+            answer: sampleAnswer,
+        },
+    ];
+    const categories = ["Housing", "Transportation", "Food", "Income support", "Criminalization", "Immigration", "Other"];
     const results = [
         {
             title: "DMV disability placard",
@@ -31,6 +54,30 @@
             type: "Letter only",
             tags: ["Housing"]
         },
+        {
+            title: "Existing court fines",
+            description: "Supports people who have been charged with criminal or civil offenses",
+            type: "Letter only",
+            tags: ["Criminalization"]
+        },
+        {
+            title: "Documenting homelessness history",
+            description: "Helps individual counter disability-related denials and evictions and advocate for necessary repairs",
+            type: "Form + letter",
+            tags: ["Housing"]
+        },
+        {
+            title: "DMV disability placard",
+            description: "Supports people who have been charged with criminal or civil offenses",
+            type: "Form only",
+            tags: ["Transportation"]
+        },
+        {
+            title: "Housing advocacy for domestic violence",
+            description: "Supports people who have been charged with criminal or civil offenses",
+            type: "Letter only",
+            tags: ["Housing"]
+        },
     ];
 %>
 
@@ -41,68 +88,125 @@
     <%- include src/partials/header.ejs %>
 </head>
 <%- include src/partials/start.ejs %>
-    <div class="page-header">
-        <div class="page-header__section">
-            <h1 class="heading heading--2">
-                <span class="heading__title">Resources</span>
+    <div class="page-faq">
+        <div class="page-faq__card">
+            <h1 class="page-faq__card__title heading heading--2">
+                <span class="heading__title">Forms & Letters</span>
             </h1>
-            <p class="page-header__metadata">
-                Found 13 of 14 resources
-            </p>
-        </div>
-        <div class="page-header__section page-header__section--right">
-            <p class="page-header__metadata page-header__metadata--secondary">
-                Showing 4 of 5 categories
-            </p>
-            <div class="form form--inline page-header__form">
-                <input type="text"
-                    class="form__control form__control--search"
-                    placeholder="Search for a resource">
+            <button type="button"
+                class="page-faq__card__toggle"
+                data-lity
+                data-lity-target="#dfh-resources-faq"
+                data-lity-override-modal-class="modal--open"
+                data-lity-override-container-class="container container--narrow">
+                View <%= faq.length %> answered questions
+            </button>
+            <div id="dfh-resources-faq" class="page-faq__card__content lity-hide modal modal--adaptive">
+                <div class="modal__title">
+                    <h1 class="heading heading--2 heading--bold">
+                        Forms & Letters Help
+                    </h1>
+                </div>
+                <div class="modal__content">
+                    <ul class="page-faq__questions">
+                        <% faq.forEach(function(info, index) { %>
+                            <li class="faq-question <%= index === 0 && 'faq-question--open'%>">
+                                <div class="faq-question__question">
+                                    <h2 class="text text--large">
+                                        <%= info.question %>
+                                    </h2>
+                                    <button type="button"
+                                        class="faq-question__toggle"
+                                        data-toggle-container-class="faq-question"
+                                        data-toggle-container-open-class="faq-question--open"
+                                        data-toggle-open-word="show"
+                                        data-toggle-close-word="hide">
+                                        <span class="sr-only">
+                                            Toggle <%= index === 0 ? 'hide' : 'show' %> answer
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="faq-question__answer">
+                                    <%= info.answer %>
+                                </div>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+                <div class="modal__toggle">
+                    <button type="button"
+                        class="button button--small button--outline"
+                        data-lity-close>
+                        Close
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="resource-categories">
-        <div class="resource-categories__metadata">
-            Showing 4 of 5 categories
-        </div>
-        <ul class="resource-categories__list">
-            <% categories.forEach(function(category) { %>
-                <li>
-                    <button type="button"
-                        class="resource-categories__category
-                            <%= category !== "Food" && "resource-categories__category--active"  %>">
-                        <%= category %>
-                    </button>
-                </li>
-            <% }); %>
-        </ul>
-    </div>
-    <ul class="resource-previews">
-        <% results.forEach(function(result) { %>
-            <li class="resource-previews__preview">
-                <div class="resource-previews__preview__info">
-                    <h2 class="heading heading--3">
-                        <a href="/resource.html" class="link">
-                            <%= result.title %>
-                        </a>
-                    </h2>
-                    <p class="text">
-                        <%= result.description %>
+        <div class="page-faq__body">
+            <div class="page-faq__header">
+                 <div class="page-header page-header--nested">
+                <div class="page-header__section page-header__section--right">
+                    <p class="page-header__metadata">
+                        Showing 6 of 7 categories
                     </p>
+                    <div class="form form--inline page-header__form">
+                        <input type="text"
+                            class="form__control form__control--search"
+                            placeholder="Search for a form or letter">
+                    </div>
                 </div>
-                <ul class="resource-previews__preview__tags">
-                    <li class="tag tag--notable">
-                        <%= result.type %>
-                    </li>
-                    <% result.tags.forEach(function(tag) { %>
-                        <li class="tag">
-                            <%= tag %>
+            </div>
+            <div class="resource-categories">
+                <button type="button"
+                    class="resource-categories__toggle"
+                    data-toggle-container-class="resource-categories"
+                    data-toggle-container-open-class="resource-categories--open">
+                    Showing 6 of 7 categories
+                </button>
+                <ul class="resource-categories__list">
+                    <% categories.forEach(function(category) { %>
+                        <li>
+                            <button type="button"
+                                class="resource-categories__category
+                                    <%= category !== "Food" && "resource-categories__category--active"  %>">
+                                <%= category %>
+                            </button>
                         </li>
                     <% }); %>
                 </ul>
-            </li>
-        <% }); %>
-    </ul>
-    <%- include src/partials/feedback-loading-card.ejs %>
+            </div>
+            </div>
+            <div class="page-faq__content">
+                <ul class="resource-previews">
+                    <% results.forEach(function(result) { %>
+                        <li class="resource-previews__preview">
+                            <div class="resource-previews__preview__info">
+                                <h2 class="heading heading--3">
+                                    <a href="/resource.html" class="link">
+                                        <%= result.title %>
+                                    </a>
+                                </h2>
+                                <p class="text">
+                                    <%= result.description %>
+                                </p>
+                            </div>
+                            <ul class="resource-previews__preview__tags">
+                                <li class="tag tag--notable">
+                                    <%= result.type %>
+                                </li>
+                                <% result.tags.forEach(function(tag) { %>
+                                    <li class="tag">
+                                        <%= tag %>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </li>
+                    <% }); %>
+                </ul>
+                <%- include src/partials/load-more.ejs %>
+            </div>
+        </div>
+    </div>
+    <%- include src/partials/feedback-card.ejs %>
 <%- include src/partials/end.ejs %>
 </html>

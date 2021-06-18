@@ -3,15 +3,15 @@
 
     // See https://css-tricks.com/full-width-containers-limited-width-parents/#article-header-id-6
     &:#{if($pseudoelement-after, 'after', 'before')} {
-        content: '';
+        content: if($bg-color == false, none, '');
         position: absolute;
         top: 0;
         left: 50%;
-        margin-left: -50vw;
         background-color: $bg-color;
         height: 100%;
         width: 100vw;
         z-index: $z-index-behind-1;
+        transform: translate(-50%, 0);
         // Allow click events to propagate through
         // See: https://stackoverflow.com/a/4839672
         pointer-events: none;
@@ -24,4 +24,22 @@
     border: 1px solid $color-gray-light-1;
     box-shadow: 0px 0px 15px $color;
     border-radius: $border-radius;
+}
+
+@mixin vertical-slide(
+    $child-selector,
+    $open-selector,
+    $max-height: 50vh,
+    $timing: 0.2s
+) {
+    #{$open-selector} #{$child-selector} {
+        max-height: $max-height;
+
+        @content;
+    }
+    #{$child-selector} {
+        max-height: 0;
+        overflow-y: scroll;
+        transition: max-height $timing;
+    }
 }

@@ -1,5 +1,6 @@
 import SlickCarousel from 'slick-carousel';
 import $ from 'jquery';
+import 'lity';
 import './index.scss';
 
 $(function() {
@@ -36,14 +37,46 @@ $(function() {
     $('.nav__links-container').slideToggle('fast');
   });
 
-  $('.toolkit-topics__toggle').on('click', function() {
-    $('.toolkit-topics').toggleClass('toolkit-topics--open');
-    const $this = $(this),
-      oldText = $this.text(),
-      newText = oldText.includes('Show')
-        ? oldText.replace('Show', 'Hide')
-        : oldText.replace('Hide', 'Show');
-    $this.text(newText);
+  $('[data-toggle-container-class]').on('click', function() {
+    if (this.dataset) {
+      const $this = $(this),
+        {
+          toggleContainerClass,
+          toggleContainerOpenClass,
+          toggleOpenWord,
+          toggleCloseWord,
+        } = this.dataset;
+      if (toggleContainerClass && toggleContainerOpenClass) {
+        $this
+          .parents('.' + toggleContainerClass)
+          .toggleClass(toggleContainerOpenClass);
+      }
+      if (toggleOpenWord && toggleCloseWord) {
+        const oldMarkup = $this.html(),
+          newMarkup = oldMarkup.includes(toggleOpenWord)
+            ? oldMarkup.replace(toggleOpenWord, toggleCloseWord)
+            : oldMarkup.replace(toggleCloseWord, toggleOpenWord);
+        $this.html(newMarkup);
+      }
+    }
+  });
+
+  // see https://github.com/jsor/lity#events
+  $(document).on('lity:ready lity:remove', function(event, instance) {
+    const $triggerEl = instance.opener(),
+      $lityEl = instance.element();
+    if (event && event.target && $triggerEl) {
+      const {
+        lityOverrideModalClass,
+        lityOverrideContainerClass,
+      } = $triggerEl.data();
+      if (lityOverrideModalClass) {
+        event.target.classList.toggle(lityOverrideModalClass);
+      }
+      if (lityOverrideContainerClass) {
+        $lityEl.find('.lity-container').addClass(lityOverrideContainerClass);
+      }
+    }
   });
 });
 

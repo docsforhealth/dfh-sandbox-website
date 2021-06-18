@@ -1,5 +1,6 @@
-@import '~scut/dist/scut';
+@import '~lity/dist/lity';
 @import '~normalize.css/normalize';
+@import '~scut/dist/scut';
 @import '~slick-carousel/slick/slick';
 
 @import 'scss/vars';
@@ -13,5 +14,8 @@
 @import 'scss/utils';
 
 @import 'scss/pages/landing';
+@import 'scss/pages/resource-detail';
 @import 'scss/pages/resources';
 @import 'scss/pages/toolkits';
+
+@import 'scss/overrides/lity';

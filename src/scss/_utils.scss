@@ -16,3 +16,10 @@
 .text-center {
     text-align: center;
 }
+.text-right {
+    text-align: right;
+}
+
+.sr-only {
+    @include scut-hide-visually;
+}

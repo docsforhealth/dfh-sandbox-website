@@ -65,11 +65,11 @@
             width: 50%;
             max-width: $baseunit * 15;
         }
-        &__button {
+        & &__button {
             @include scut-center-transform;
 
             top: calc(100% - #{$height-control * 1.5});
-            left: 75%;
+            left: 25%;
             height: $height-control;
             width: $height-control;
             background-color: $color-gold;
@@ -78,13 +78,10 @@
             border-radius: 100%;
 
             &:after {
-                $triangle-size: $height-control * 0.4;
-                @include scut-triangle(right, $triangle-size);
+                @include scut-triangle(right, $height-control * 0.4);
+                @include scut-center-transform;
 
                 content: '';
-                position: relative;
-                top: $triangle-size * 0.1;
-                left: $triangle-size * 0.1;
             }
         }
     }
@@ -185,7 +182,7 @@
                 margin-top: 0;
                 transform: rotateY(180deg);
             }
-            &__button {
+            & &__button {
                 top: calc(50% + #{$baseunit});
                 left: $play-button-left-position;
             }
@@ -445,7 +442,7 @@
                 top: 0;
                 height: 85vw;
                 width: 60vw;
-                margin-left: -70vw;
+                margin-left: -47vw;
                 opacity: 0.8;
             }
             &__featured {

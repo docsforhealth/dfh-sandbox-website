@@ -19,6 +19,8 @@ $color-navy-light-2: #eaeff4;
 $color-white: white;
 $color-none: transparent;
 
+$color-transparent-gray: rgba(89, 89, 89, 0.5);
+
 $baseunit: 1rem;
 
 $unit-vertical-spacing-small: $baseunit;
@@ -33,6 +35,7 @@ $width-logo: $baseunit * 14;
 
 $offset-form-item-1: $baseunit * 0.5;
 $offset-form-item-2: $baseunit * 0.7;
+$offset-page-header-top: $baseunit * 2;
 
 $font-weight-normal: 400;
 $font-weight-bold: 600; // actually is semi-bold
@@ -48,8 +51,9 @@ $z-index-behind-2: -10;
 $media-height-actual-tablet: 500px; // excludes mobile landscape
 
 $media-width-landscape-small-mobile: 568px; // iPhone 5
-$media-width-landscape-medium-mobile: 667px; // iPhone 6 Plus
+$media-width-landscape-medium-mobile: 667px; // iPhone 6
 $media-width-tablet: 768px; // iPad
 $media-width-landscape-large-mobile: 812px; // iPhone X and Pixel 2 XL
 $media-width-laptop: 1024px;
 $media-width-desktop: 1280px;
+$media-width-large-desktop: 1440px;
