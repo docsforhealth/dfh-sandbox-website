@@ -6,7 +6,7 @@ Run `yarn start`
 
 ## Deploying demo
 
-Demo page is [a GitHub Page deployed from the `demo` branch](https://gist.github.com/cobyism/4730490#gistcomment-1715927).
+Demo page is [a GitHub Page deployed from the `demo` branch](https://gist.github.com/cobyism/4730490#gistcomment-2375522).
 
 Run `yarn deploy`
 

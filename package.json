@@ -7,7 +7,7 @@
         "build": "npx webpack --mode development",
         "build:prod": "npx webpack --mode production",
         "start": "npx webpack-dev-server",
-        "deploy": "npm run build:prod && git subtree push --prefix dist origin demo"
+        "deploy": "npm run build:prod && cd dist && git add -A && git commit -m \"Deploying new changes on $(date)\" && git push origin demo && cd .."
     },
     "devDependencies": {
         "@babel/core": "^7.6.0",
