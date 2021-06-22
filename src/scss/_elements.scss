@@ -173,7 +173,8 @@
         border-bottom: 3px solid $color-gold-light-1;
     }
     &--open &__content {
-        overflow: scroll;
+        @include scroll-vertical;
+
         padding: 0 $baseunit;
     }
     &--open &__toggle {

@@ -38,8 +38,25 @@
         @content;
     }
     #{$child-selector} {
+        @include scroll-vertical;
+
         max-height: 0;
-        overflow-y: scroll;
         transition: max-height $timing;
     }
+}
+
+// see https://iamsteve.me/blog/entry/using-flexbox-for-horizontal-scrolling-navigation
+// [1]: Automatic overflow means a scroll bar won’t be present if it isn’t needed
+// [2]: Make it smooth scrolling on iOS devices
+// [3]: Hide the ugly scrollbars in Edge until the scrollable area is hovered
+@mixin scroll-vertical() {
+    overflow-y: auto; /* [1] */
+    -webkit-overflow-scrolling: touch; /* [2] */
+    -ms-overflow-style: -ms-autohiding-scrollbar; /* [3] */
+}
+
+@mixin scroll-horizontal() {
+    overflow-x: auto; /* [1] */
+    -webkit-overflow-scrolling: touch; /* [2] */
+    -ms-overflow-style: -ms-autohiding-scrollbar; /* [3] */
 }

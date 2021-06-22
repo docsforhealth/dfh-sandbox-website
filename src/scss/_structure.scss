@@ -263,8 +263,9 @@
                 display: none;
             }
             &__content {
+                @include scroll-vertical;
+
                 padding-top: 0;
-                overflow-y: scroll;
                 display: initial;
             }
         }
