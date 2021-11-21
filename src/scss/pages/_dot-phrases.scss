@@ -1,0 +1,108 @@
+.dot-phrase-preview-list {
+    @include scut-list-unstyled;
+
+    padding-top: $baseunit;
+
+    &__preview {
+        margin-bottom: $baseunit;
+    }
+
+    @media (min-width: $media-width-landscape-medium-mobile) {
+        padding-top: $baseunit * 2;
+    }
+}
+
+.dot-phrase-preview {
+    border: 1px solid $color-seafoam-dark-1;
+    border-radius: $border-radius;
+
+    &__header {
+        &__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            background-color: $color-seafoam;
+            border-bottom: 1px solid $color-seafoam-dark-1;
+            padding: ($baseunit * 0.5) $baseunit;
+        }
+        &__copy {
+            @include copy-button(
+                $breakpoint: $media-width-landscape-medium-mobile
+            );
+
+            flex-shrink: 0;
+        }
+    }
+    &__body {
+        padding: $baseunit;
+
+        & > *:not(:last-child) {
+            margin-bottom: $baseunit * 1.5;
+        }
+    }
+
+    @media (min-width: $media-width-landscape-medium-mobile) {
+        &__header {
+            display: flex;
+            align-items: center;
+            padding: 0 $baseunit;
+            background-color: $color-seafoam;
+            border-bottom: 1px solid $color-seafoam-dark-1;
+
+            &__info {
+                border-bottom-width: 0;
+
+                flex-grow: 1;
+                padding: ($baseunit * 0.5) $baseunit;
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+.dot-phrase-detail {
+    @extend .container;
+    @extend .container--narrow;
+    @include auto-space-vertical($baseunit * 2, false);
+}
+
+.dot-phrase {
+    $horizontal-overhang-small: $baseunit;
+    $horizontal-overhang-large: $baseunit * 3.5;
+
+    position: relative;
+    background-color: $color-seafoam;
+    border: 1px solid $color-seafoam-dark-1;
+    border-left-width: 0;
+    border-right-width: 0;
+    margin-left: $horizontal-overhang-small * -1;
+    margin-right: $horizontal-overhang-small * -1;
+    padding: 0 $horizontal-overhang-small $baseunit * 2;
+
+    &__copy {
+        @include copy-button($breakpoint: $media-width-tablet);
+
+        margin-bottom: $baseunit;
+    }
+
+    @media (min-width: $media-width-tablet) {
+        border-left-width: 1px;
+        border-right-width: 1px;
+        margin-left: $horizontal-overhang-large * -1;
+        margin-right: $horizontal-overhang-large * -1;
+        padding: ($horizontal-overhang-large * 0.5) $horizontal-overhang-large;
+        border-radius: $border-radius;
+
+        &__copy {
+            margin-bottom: 0;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 1px solid $color-seafoam-dark-1;
+            border-top-width: 0;
+            border-right-width: 0;
+            border-bottom-left-radius: $border-radius;
+        }
+    }
+}

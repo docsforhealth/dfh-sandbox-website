@@ -78,6 +78,16 @@ $(function() {
       }
     }
   });
+
+  $('[data-copy-selector]').on('click', function() {
+    const textToCopy = $(this.dataset.copySelector)
+      ?.text()
+      ?.trim();
+    if (textToCopy) {
+      // see https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
+      navigator.clipboard.writeText(textToCopy)
+    }
+  });
 });
 
 function setCategoryActive(sliderEl, index) {

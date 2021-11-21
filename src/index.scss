@@ -9,12 +9,13 @@
 
 @import 'scss/controls';
 @import 'scss/elements';
+@import 'scss/page';
 @import 'scss/structure';
 @import 'scss/typography';
 @import 'scss/utils';
 
+@import 'scss/pages/dot-phrases';
 @import 'scss/pages/landing';
-@import 'scss/pages/resource-detail';
 @import 'scss/pages/resources';
 @import 'scss/pages/toolkits';
 

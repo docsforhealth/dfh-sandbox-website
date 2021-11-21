@@ -60,3 +60,50 @@
     -webkit-overflow-scrolling: touch; /* [2] */
     -ms-overflow-style: -ms-autohiding-scrollbar; /* [3] */
 }
+
+@mixin auto-space-vertical($amount: $baseunit, $skip-last: true) {
+    & > * {
+        margin-bottom: $amount;
+    }
+    @if $skip-last {
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@mixin copy-button($breakpoint) {
+    @extend .button;
+    @extend .button--outline;
+
+    position: relative;
+    width: 100%;
+    border-width: 0;
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        height: $height-control;
+        width: $height-control;
+        background-image: url('~assets/images/icon-copy.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    @media (min-width: $breakpoint) {
+        @include scut-image-replace;
+
+        width: auto;
+        height: $height-control;
+        background-image: url('~assets/images/icon-copy.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &:after {
+            content: none;
+        }
+    }
+}

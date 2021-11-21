@@ -1,0 +1,66 @@
+<%
+    const result = {
+        title: "Explains effect of homelessness on medical morbidity and healthcare utilization",
+        body: "Pt is experiencing/at risk of homelessness or housing insecurity. Long-term consequences of homelessness include higher morbidity of both physical and mental health conditions, trauma and exposure to violence, and increased rates of ED visits and hospitalizations (Clark, RE. Am J Public Health 2018; Lim, S. Health Serv Res 2018; Taylor L. Health Affairs 2018).<br><br>Based on these risk factors, we discussed the following safety and support plans: ***",
+        tags: ["Incarceration", "Housing Insecurity"],
+        description: "Housing the homeless has consistently been shown to improve health outcomes. In one of several randomized controlled trials of interventions to address homelessness, long-term housing subsidies had positive impacts on measures of psychological distress and intimate partner violence. Particularly among chronically homeless people, having a safe place to stay can both improve health and decrease health care costs.",
+        citations: [
+            "Clark RE, Weinreb L, Flahive JM, Seifert RW. Health care utilization and expenditures of homeless family members before and after emergency housing. Am J Public Health. 2018; 108(6):808-814. PMID: 29672141. DOI: 10.2105/AJPH.2018.304370.",
+            "Lim S, Singh TP, Hall G, Walters S, Gould LH. Impact of a New York City supportive housing program on housing stability and preventable health care among homeless families. Health Serv Res. 2018;53(5):3437-3454. PMID: 29532478. DOI: 10.1111/1475-6773.12849.",
+            "Taylor L. Health Policy Brief: housing and health: an overview of the literature. Health Affairs [serial on the Internet]. 2018 Jun 7. Available from: https:// www.healthaffairs.org/do/10.1377/hpb20180313.396577/full/",
+        ],
+    };
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= result.title.substring(0, 24) %>... | Docs for Health</title>
+    <%- include src/partials/header.ejs %>
+</head>
+<%- include src/partials/start.ejs %>
+    <article class="dot-phrase-detail detail-container">
+        <section>
+            <h1 class="heading heading--2">
+                <a href="/dot-phrases.html" class="heading__nav">
+                    <img src="assets/images/icon-arrow.svg"
+                        class="heading__nav__image"
+                        alt="Back arrow to return to previous page">
+                    <span class="heading__nav__text">
+                        All dot phrases
+                    </span>
+                </a>
+                <%= result.title %>
+            </h1>
+            <ul class="list list--unstyled margin-b-1">
+                <% result.tags.forEach(function(tag) { %>
+                    <li class="tag">
+                        <%= tag %>
+                    </li>
+                <% }); %>
+            </ul>
+            <p class="text">
+                <%= result.description %>
+            </p>
+        </section>
+        <section class="dot-phrase">
+            <button type="button"
+                class="dot-phrase__copy"
+                data-copy-selector="#dot-phrase-body">
+                Copy
+            </button>
+            <span id="dot-phrase-body"><%- result.body %></span>
+        </section>
+        <section>
+            <h2 class="heading heading--3">
+                <span class="heading__title">Sources</span>
+            </h2>
+            <ul class="list list--hanging-indent">
+                <% result.citations.forEach(function(citation) { %>
+                    <li><%= citation %></li>
+                <% }); %>
+            </ul>
+        </section>
+    </article>
+<%- include src/partials/end.ejs %>
+</html>

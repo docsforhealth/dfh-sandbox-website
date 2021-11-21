@@ -30,9 +30,18 @@
     padding-left: $baseunit * 2;
 
     &--unstyled {
+        @include scut-list-unstyled; // resets left padding too
+    }
+    &--hanging-indent {
+        $indent-size: $baseunit * 2;
+
         @include scut-list-unstyled;
 
-        padding-left: 0;
+        & > li {
+            @include scut-hanging-indent($indent-size);
+
+            margin-bottom: $baseunit * 0.5;
+        }
     }
 }
 
@@ -136,7 +145,7 @@
         height: $height-control-small;
         width: $height-control-small;
         flex-shrink: 0;
-        background-image: url('../assets/images/icon-dropdown.svg');
+        background-image: url('~assets/images/icon-dropdown.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;

@@ -28,7 +28,7 @@
             top: -5vw;
             height: 105vw;
             width: 100vw;
-            background-image: url('../../assets/images/drawing-stethescope.png');
+            background-image: url('~assets/images/drawing-stethescope.png');
             background-position: top right -30vw;
             background-repeat: no-repeat;
             background-size: auto 100%;
@@ -197,7 +197,7 @@
         height: $baseunit;
     }
     @include full-width-bg($color-none, $pseudoelement-after: true) {
-        background-image: url('../../assets/images/bg-blue-wave.png');
+        background-image: url('~assets/images/bg-blue-wave.png');
         background-position: center left -10vw;
         background-repeat: no-repeat;
         background-size: 160vw 70%;
@@ -286,7 +286,7 @@
                 flex-shrink: 0;
                 height: $nav-height;
                 width: $nav-height;
-                background-image: url('../../assets/images/icon-arrow.svg');
+                background-image: url('~assets/images/icon-arrow.svg');
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: $baseunit * 2;
@@ -421,7 +421,7 @@
             height: 115vw;
             width: 80vw;
             margin-left: -90vw;
-            background-image: url('../../assets/images/drawing-pencil.png');
+            background-image: url('~assets/images/drawing-pencil.png');
             background-position: top right;
             background-repeat: no-repeat;
             background-size: contain;
@@ -473,7 +473,7 @@
 
         @media (min-width: $media-width-tablet) {
             @include full-width-bg($color-none, $pseudoelement-after: true) {
-                background-image: url('../../assets/images/bg-yellow-waves.png');
+                background-image: url('~assets/images/bg-yellow-waves.png');
                 background-position: bottom left -10vw;
                 background-repeat: no-repeat;
                 background-size: 120vw 50%;

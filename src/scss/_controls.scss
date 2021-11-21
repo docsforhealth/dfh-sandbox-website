@@ -11,6 +11,14 @@
     &:active {
         text-decoration: none;
     }
+
+    // if flexbox parent, parent needs to have `align-items: stretch;`
+    // see https://stackoverflow.com/a/41791009
+    &--expand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .button {
@@ -42,7 +50,8 @@
         color: $color-gray-dark-1;
         border-color: $color-gold-dark-1;
     }
-    &--outline, &--outline.button--secondary {
+    &--outline,
+    &--outline.button--secondary {
         background-color: $color-none;
         color: $color-navy;
         border-color: $color-navy-light-1;
@@ -96,7 +105,7 @@
 
         &--search {
             padding-right: $baseunit * 3;
-            background-image: url('../assets/images/icon-search.svg');
+            background-image: url('~assets/images/icon-search.svg');
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center right;
