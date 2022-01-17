@@ -188,6 +188,7 @@
     }
 }
 
+// renamed to page-taxonomy in WP plugin
 .page-categories {
     $column-gap: $baseunit * 0.25;
 
@@ -222,7 +223,7 @@
             background-image: url('~assets/images/icon-dropdown.svg');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: conver;
+            background-size: cover;
         }
     }
     &__list {
